@@ -64,6 +64,9 @@ public class ExploreSubcategoryAdapter extends RecyclerView.Adapter<ExploreSubca
 //        viewHolder.subCategoryImage.setColorFilter(selectedColor);
 //        viewHolder.subCategoryName.setTextColor(selectedColor);
 
+
+        viewHolder.subCategoryImage.setImageResource(subcategories.get(i).getResImage());
+
         /*
          * Mengeset onClickListener konten
          */

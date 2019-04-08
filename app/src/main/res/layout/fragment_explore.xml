@@ -26,11 +26,13 @@
                 android:id="@+id/highlights_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:fillColor="@color/colorText"
-                app:radius="5dp"
+                app:fillColor="#FFFFFFFF"
+                app:pageColor="#00000000"
+                app:radius="6dp"
                 app:slideInterval="5000"
-                app:strokeColor="@color/colorText"
-                app:strokeWidth="2dp"/>
+                app:strokeColor="#FF777777"
+                app:strokeWidth="1dp"
+                />
 
         </android.support.v7.widget.CardView>
 

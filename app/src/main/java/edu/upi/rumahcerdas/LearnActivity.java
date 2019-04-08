@@ -12,12 +12,14 @@ import edu.upi.rumahcerdas.model.ExploreSubcategoryModel;
 
 public class LearnActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
+    ExploreSubcategoryModel subCategory;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_learn);
 
-        ExploreSubcategoryModel subCategory = (ExploreSubcategoryModel) getIntent().getSerializableExtra("subcategory");
+        subCategory = (ExploreSubcategoryModel) getIntent().getSerializableExtra("subcategory");
 
         YouTubePlayerView contentVideo = findViewById(R.id.content_video);
         contentVideo.initialize(APIConfiguration.youtubeKey, this);
@@ -25,8 +27,12 @@ public class LearnActivity extends YouTubeBaseActivity implements YouTubePlayer.
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+        //profil UPI: uK1OIx_iGcg
+        //profil FIP: J-APQ-s5tA8
+        //pemrograman Android:
         if (!b) {
-            youTubePlayer.cueVideo("wKJ9KzGQq0w");
+            //youTubePlayer.cueVideo("uK1OIx_iGcg");
+            youTubePlayer.cueVideo(subCategory.getIdYoutube());
         }
     }
 

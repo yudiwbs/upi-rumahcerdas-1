@@ -10,12 +10,12 @@
 
     <ImageView
         android:id="@+id/subcategory_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/ic_book_open"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/ic_menu_search"
         tools:ignore="ContentDescription" />
 
     <TextView

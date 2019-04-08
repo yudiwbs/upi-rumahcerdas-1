@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 import com.synnapps.carouselview.ViewListener;
 
 import java.util.ArrayList;
@@ -56,54 +57,48 @@ public class ExploreFragment extends Fragment {
         }
     }
 
+    //listener untuk carousel
+    ImageListener imageListener = new ImageListener() {
+        int[] carImage = {R.drawable.profil_upi,R.drawable.pembelajaran_1,R.drawable.pembelajaran_2};
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            imageView.setImageResource(carImage[position]);
+        }
+    };
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_explore, container, false);
 
+
+
         /*
          * Mendapatkan konten highlight
          */
-        int NUMBER_OF_HIGHLIGHTS = 6;
+        int NUMBER_OF_HIGHLIGHTS = 3;
 
+
+        //carousel
+        //library yang digunakanh: https://github.com/sayyam/carouselview
         CarouselView highlightsContainer = view.findViewById(R.id.highlights_container);
         highlightsContainer.setPageCount(NUMBER_OF_HIGHLIGHTS);
+        highlightsContainer.setImageListener(imageListener);
+
+
+
+        /*
         highlightsContainer.setViewListener(new ViewListener() {
             @Override
             public View setViewForPosition(final int position) {
-                @SuppressLint("InflateParams") View content_highlight = getLayoutInflater().inflate(R.layout.explore_container_highlight, null);
+                @SuppressLint("InflateParams")
+                  View content_highlight = getLayoutInflater().inflate(R.layout.explore_container_highlight, null);
 
-                /*
-                 * Mengeset isi konten
-                 */
-//                ImageView contentImageBackground = content_highlight.findViewById(R.id.image_background);
-//                contentImageBackground.setImageResource(R.drawable.sample_image);
-
-                // Mengeset color filter gambar latar
-                // untuk memudahkan pengguna membaca teks abstrak
-//                contentImageBackground.setColorFilter(adjustAlpha(
-//                        getDominantColor(
-//                                BitmapFactory.decodeResource(
-//                                        Objects.requireNonNull(getContext()).getResources(),
-//                                        R.drawable.sample_image)),
-//                        0.5f
-//                ));
-//                contentImageBackground.setColorFilter(
-//                        adjustAlpha(
-//                                ContextCompat.getColor(
-//                                        Objects.requireNonNull(getContext()),
-//                                        R.color.colorPrimary
-//                                ),
-//                                0.6f
-//                        )
-//                );
 
                 TextView contentAbstract = content_highlight.findViewById(R.id.text_description);
-                contentAbstract.setText("Lorem ipsum dolor sit amet, ullum populo...");
+                contentAbstract.setText("Video tentang pemrograman");
 
-                /*
-                 * Mengeset onClickListener konten
-                 */
+                 // Mengeset onClickListener konten
                 content_highlight.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -114,6 +109,7 @@ public class ExploreFragment extends Fragment {
                 return content_highlight;
             }
         });
+        */
 
         /*
          * Mendapatkan kategori konten
@@ -124,65 +120,34 @@ public class ExploreFragment extends Fragment {
         categoriesContainer.setAdapter(new ExploreCategoryAdapter(
                 new ArrayList<ExploreCategoryModel>() {{
                     add(new ExploreCategoryModel(
-                            "Social Engineering",
+                            "Profil UPI dan Fakultas",
                             new ArrayList<ExploreSubcategoryModel>() {{
-                                add(new ExploreSubcategoryModel("Subcategory 1"));
-                                add(new ExploreSubcategoryModel("Subcategory 2"));
-                                add(new ExploreSubcategoryModel("Subcategory 3"));
-                                add(new ExploreSubcategoryModel("Subcategory 4"));
-                                add(new ExploreSubcategoryModel("Subcategory 5"));
+                                add(new ExploreSubcategoryModel("Profil UPI",R.drawable.kategori_profil_upi_kecil,"uK1OIx_iGcg"));
+                                add(new ExploreSubcategoryModel("Profil FIP",R.drawable.kategori_profil_fip_kecil,"J-APQ-s5tA8"));
+                                add(new ExploreSubcategoryModel("Profil FPMIPA",R.drawable.kategori_profil_fmipa_kecil,"uK1OIx_iGcg"));
+                                add(new ExploreSubcategoryModel("Profil FPTK",R.drawable.kategori_profil_fptk_kecil,"uK1OIx_iGcg"));
+                                add(new ExploreSubcategoryModel("Profil FPOK",R.drawable.kategori_profil_fpok_kecil,"uK1OIx_iGcg"));
                             }}
                     ));
                     add(new ExploreCategoryModel(
-                            "Math",
+                            "Pendidikan Teknik Elektro",
                             new ArrayList<ExploreSubcategoryModel>() {{
-                                add(new ExploreSubcategoryModel("Subcategory 6"));
-                                add(new ExploreSubcategoryModel("Subcategory 7"));
-                                add(new ExploreSubcategoryModel("Subcategory 8"));
-                                add(new ExploreSubcategoryModel("Subcategory 9"));
-                                add(new ExploreSubcategoryModel("Subcategory 10"));
+                                add(new ExploreSubcategoryModel("Microcontroller",R.drawable.prev_microcontroller_kecil,"CK8acfrGmog"));
+                                add(new ExploreSubcategoryModel("Teknik Digital",R.drawable.prev_tek_digital_kecil,"vszKnaGdqRg"));
+                                add(new ExploreSubcategoryModel("Transformator",R.drawable.prev_transformator_kecil,"uK1OIx_iGcg"));
                             }}
                     ));
                     add(new ExploreCategoryModel(
-                            "Biology",
+                            "Ilmu Komputer",
                             new ArrayList<ExploreSubcategoryModel>() {{
-                                add(new ExploreSubcategoryModel("Subcategory 11"));
-                                add(new ExploreSubcategoryModel("Subcategory 12"));
-                                add(new ExploreSubcategoryModel("Subcategory 13"));
-                                add(new ExploreSubcategoryModel("Subcategory 14"));
-                                add(new ExploreSubcategoryModel("Subcategory 15"));
+                                add(new ExploreSubcategoryModel("Android",R.drawable.prev_android_kecil,"uK1OIx_iGcg"));
+                                add(new ExploreSubcategoryModel("Biner",R.drawable.prev_biner_kecil,"uK1OIx_iGcg"));
+                                add(new ExploreSubcategoryModel("RPL",R.drawable.prev_generik,"uK1OIx_iGcg"));
+                                add(new ExploreSubcategoryModel("Basisdata",R.drawable.prev_generik,"uK1OIx_iGcg"));
+                                add(new ExploreSubcategoryModel("Sistem Basisdata",R.drawable.prev_generik,"uK1OIx_iGcg"));
                             }}
                     ));
-                    add(new ExploreCategoryModel(
-                            "Physics",
-                            new ArrayList<ExploreSubcategoryModel>() {{
-                                add(new ExploreSubcategoryModel("Subcategory 1"));
-                                add(new ExploreSubcategoryModel("Subcategory 2"));
-                                add(new ExploreSubcategoryModel("Subcategory 3"));
-                                add(new ExploreSubcategoryModel("Subcategory 4"));
-                                add(new ExploreSubcategoryModel("Subcategory 5"));
-                            }}
-                    ));
-                    add(new ExploreCategoryModel(
-                            "Chemistry",
-                            new ArrayList<ExploreSubcategoryModel>() {{
-                                add(new ExploreSubcategoryModel("Subcategory 6"));
-                                add(new ExploreSubcategoryModel("Subcategory 7"));
-                                add(new ExploreSubcategoryModel("Subcategory 8"));
-                                add(new ExploreSubcategoryModel("Subcategory 9"));
-                                add(new ExploreSubcategoryModel("Subcategory 10"));
-                            }}
-                    ));
-                    add(new ExploreCategoryModel(
-                            "English",
-                            new ArrayList<ExploreSubcategoryModel>() {{
-                                add(new ExploreSubcategoryModel("Subcategory 11"));
-                                add(new ExploreSubcategoryModel("Subcategory 12"));
-                                add(new ExploreSubcategoryModel("Subcategory 13"));
-                                add(new ExploreSubcategoryModel("Subcategory 14"));
-                                add(new ExploreSubcategoryModel("Subcategory 15"));
-                            }}
-                    ));
+
                 }},
                 getActivity()
         ));
@@ -238,3 +203,30 @@ public class ExploreFragment extends Fragment {
         return Color.argb(alpha, red, green, blue);
     }
 }
+
+
+                /*
+                 * Mengeset isi konten
+                 */
+//                ImageView contentImageBackground = content_highlight.findViewById(R.id.image_background);
+//                contentImageBackground.setImageResource(R.drawable.sample_image);
+
+// Mengeset color filter gambar latar
+// untuk memudahkan pengguna membaca teks abstrak
+//                contentImageBackground.setColorFilter(adjustAlpha(
+//                        getDominantColor(
+//                                BitmapFactory.decodeResource(
+//                                        Objects.requireNonNull(getContext()).getResources(),
+//                                        R.drawable.sample_image)),
+//                        0.5f
+//                ));
+//                contentImageBackground.setColorFilter(
+//                        adjustAlpha(
+//                                ContextCompat.getColor(
+//                                        Objects.requireNonNull(getContext()),
+//                                        R.color.colorPrimary
+//                                ),
+//                                0.6f
+//                        )
+//                );
+
